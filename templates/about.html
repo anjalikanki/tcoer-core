@@ -1,0 +1,82 @@
+{% include "header.html" %}
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url({{ url_for('static', filename='img/coreteam.jpeg')}})">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>About Us</h1>
+            <span class="subheading">This is what we do.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner" align="center">
+        <div class="carousel-item active">
+          <h2>Vaishnavi Kondewar</h2>
+          <img class="doggo-image" src="{{url_for('static',filename='img/vaishnavi.png')}}" alt="First slide">
+          <em>Core Lead</em>
+        </div>
+        <div class="carousel-item">
+          <h2>Sainath Balkawade</h2>
+          <img class="doggo-image" src="{{url_for('static',filename='img/sainath.png')}}" alt="First slide">
+          <em>Vice President</em>
+        </div>
+        <div class="carousel-item">
+          <h2>Shruti Shewale</h2>
+          <img class="doggo-image" src="{{url_for('static',filename='img/shruti.png')}}" alt="First slide">
+          <em>Cultural Secretary</em>
+        </div>
+        <div class="carousel-item">
+          <h2>Roshan Kumbharkar</h2>
+          <img class="doggo-image" src="{{url_for('static',filename='img/roshan.png')}}" alt="Second slide">
+          <em>Technical Secretary</em>
+        </div>
+        <div class="carousel-item">
+          <h2>Kaushal Gawas</h2>
+          <img class="doggo-image" src="{{url_for('static',filename='img/kaushal.png')}}" alt="Third slide">
+          <em>Sports Secretary</em>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+<br/>
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <p>Welcome to Trinity CORE, a platform dedicated to providing valuable resources, insights, and inspiration to
+          students, educators, and individuals passionate about higher education. Our mission is to empower and support
+          individuals in their pursuit of knowledge, personal growth, and success. </p>
+        <p>We believe that education is a transformative journey that extends beyond the classroom walls.
+          We aim to create an inclusive and dynamic community where students, professors, and guest contributors can
+          come together to share their experiences, expertise, and ideas.</p>
+        <p>Our team of dedicated writers and contributors comprises students, educators, and professionals who are
+          committed to delivering high-quality content. Each article is meticulously researched and crafted to provide
+          practical tips, thought-provoking perspectives, and actionable advice.</p>
+        <p>We understand that the college experience is unique for every individual, and that's why we cover a wide
+          range of topics. Whether you're seeking study strategies to excel academically, career guidance to launch your
+          professional journey, or personal development insights to thrive in all aspects of life, we have you covered.
+        </p>
+        <p>We're constantly exploring new topics and ideas to write about, and we welcome feedback and suggestions
+          from our readers. Our aim is to create a community where everyone feels welcome and included.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  {% include "footer.html" %}
