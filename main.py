@@ -9,20 +9,23 @@ from sqlalchemy.orm import relationship
 from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
 from forms import LoginForm, RegisterForm, CreatePostForm, CommentForm
 from flask_gravatar import Gravatar
+import os
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'yoursecretkey'
+app.config['SECRET_KEY'] =os.environ.get('SECRET_KEY')
 ckeditor = CKEditor(app)
 Bootstrap(app)
 gravatar = Gravatar(app, size=100, rating='g', default='retro', force_default=False, force_lower=False, use_ssl=False, base_url=None)
 
 ##CONNECT TO DB
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
-
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DB_URL')
 db = SQLAlchemy(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
+
+EMAIL=os.environ.get('MY_EMAIL')
+PASSWORD=os.environ.get('MY_PASSWORD')
 
 @login_manager.user_loader
 
@@ -162,9 +165,30 @@ def about():
     return render_template("about.html", current_user=current_user)
 
 
-@app.route("/contact")
+@app.route("/contact",methods=['GET','POST'])
 def contact():
-    return render_template("contact.html", current_user=current_user)
+    form=ContactForm()
+    if request.method == "POST":
+        name=form.name.data
+        email = form.email.data
+        phone=form.phone.data
+        text=form.message.data
+
+        with smtplib.SMTP("smtp.gmail.com") as connect:
+            connect.starttls()
+            connect.login(user=EMAIL,password=PASSWORD)
+            connect.sendmail(
+                from_addr=EMAIL,
+                to_addrs=EMAIL,
+                msg=f"Subject:New "
+                    f"\n\nName:{name}"
+                    f"\n\nEmail:{email}"
+                    f"\n\nPhone:{phone}"
+                    f"\n\nMessage:{text}"
+            )
+        flash("Your query has been sent")
+        return redirect(url_for('contact'))
+    return render_template("contact.html",form=form)
 
 
 @app.route("/new-post", methods=["GET", "POST"])
