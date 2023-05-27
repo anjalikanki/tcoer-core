@@ -118,11 +118,6 @@
   transform: translateY(2px);
 }
 
-.image{
-    width:10%;
-    border-radius:75%;
-    margin:20px;
-}
 
 .testimonial-text{
     font-size:3rem;
